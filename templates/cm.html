@@ -1,82 +1,305 @@
+{% extends "base.html" %}
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'cs5.css' %}">
-    <link rel="icon" type="image" href="{% static 'the_avenger-removebg-preview.png' %}">
-    <title>comics and movies</title>
-</head>
-<body id="a1">
-    
-    <div id="a2">
-        <div class="a3">
-            <a href="{% url 'home' %}"><img src="{% static 'marvel logo.png' %}"  class="a6"></a>
-        </div>
 
-        <div class="a4">
-            <input type="text" placeholder="Search">
-        </div>
+{% block title %}Comics & Movies | Marvel Archive{% endblock %}
 
-        <div class="a5">
-        <span><h2>MENU</h2></span>
-          <div class="dropdowncontent">
-            <ul>
-            <li><a href="#tit1" class="bc" >comics</a></li>
-            <li><a href="#tit2" class="bc" >movies</a></li>
-            <li><a href="#" class="bc">episodes</a></li>
-            </ul>
-          </div>
+{% block head %}
+<style>
+/* Flip Card Container */
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: 350px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 15px 0 rgba(0,0,0,0.5);
+    border-radius: 12px;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.flip-card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.flip-card-title {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    padding: 1.5rem;
+    color: white;
+    text-align: left;
+}
+
+.flip-card-back {
+    background: var(--dark-surface);
+    color: white;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    border: 2px solid var(--marvel-red);
+}
+
+.flip-card-back p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;  
+}
+.flip-card-back h3 {
+    color: var(--marvel-red);
+    margin-bottom: 1rem;
+}
+
+/* Modal Styling */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 2000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: hidden; 
+    background-color: rgba(0,0,0,0.85); 
+    backdrop-filter: blur(8px);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: var(--dark-bg);
+    margin: auto;
+    padding: 0;
+    border: 1px solid var(--marvel-red);
+    width: 85%;
+    max-width: 800px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    animation: zoomIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(237, 29, 36, 0.3);
+}
+
+@keyframes zoomIn {
+    from {transform: scale(0.8); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
+}
+
+.close-btn {
+    color: #fff;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 2010;
+    transition: var(--transition);
+}
+.close-btn:hover {
+    color: var(--marvel-red);
+    transform: scale(1.1);
+}
+
+.modal-img {
+    width: 45%;
+    object-fit: cover;
+}
+.modal-info {
+    padding: 3rem 2rem;
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.modal-info h2 {
+    font-size: 3rem;
+    color: var(--marvel-red);
+    margin-bottom: 1rem;
+}
+.modal-info p {
+    color: var(--text-light);
+    line-height: 1.6;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.buy-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: var(--marvel-red);
+    color: white;
+    text-decoration: none;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.5rem;
+    border-radius: 6px;
+    transition: var(--transition);
+    text-align: center;
+    max-width: 250px;
+}
+.buy-btn:hover {
+    background: var(--marvel-red-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(237, 29, 36, 0.4);
+}
+
+@media (max-width: 768px) {
+    .modal-content { flex-direction: column; max-height: 90vh; overflow-y: auto; }
+    .modal-img { width: 100%; height: 300px; }
+    .modal-info { width: 100%; }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<section style="padding: 100px 0; background: linear-gradient(to right, #000, #1a0000);">
+    <div class="container">
+        <div style="display: flex; gap: 4rem; align-items: center; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 300px;">
+                <img src="{% static 'Marvel_Comics_2024_logo.svg' %}" alt="Marvel Comics" style="height: 100px; margin-bottom: 2rem;">
+                <h2 class="marvel-font" style="font-size: 3rem; margin-bottom: 1.5rem;">The Birth of Legends</h2>
+                <article style="color: var(--text-muted); font-size: 1.1rem;">
+                    Marvel Comics, established in 1939 as Timely Comics, redefined storytelling with its launching of 
+                    The Fantastic Four in 1961. Created by luminaries like Stan Lee, Jack Kirby, and Steve Ditko, 
+                    the Marvel Universe has grown into a vast tapestry of heroes who mirror real-life struggles, 
+                    chiefly based in the vibrant cityscape of New York.
+                </article>
+            </div>
+            <div style="flex: 1; min-width: 300px;">
+                <img src="{% static 'comic2.jpeg' %}" alt="Classic Comics" class="glass" style="width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(237, 29, 36, 0.2);">
+            </div>
         </div>
     </div>
+</section>
 
-<div id="mp">  
-    <div id="vk">
-        <img src="{% static 'Marvel_Comics_2024_logo.svg' %}" width="200px" style="margin-left: 100px;"><br>
-        <article>Marvel Comics is a New York City-based comic book publisher, a property of 
-             The Walt Disney Company since December 31, 2009, and a subsidiary of Disney Publishing 
-             Worldwide since March 2023. Marvel was founded in 1939 by Martin Goodman as 
-             Timely Comics,and by 1951 had generally become known as Atlas Comics. 
-             The Marvel era began in August 1961 with the launch of The Fantastic Four and other superhero titles 
-             created by Stan Lee, Jack Kirby, Steve Ditko, and numerous others. The Marvel brand, which had been 
-             used over the years and decades, was solidified as the company's primary brand.
-        </article>
-
-        <img src="{% static 'comic2.jpeg' %}" width="50%" class="ke">
-        <article>Marvel counts among its characters such well-known superheroes as Spider-Man, Wolverine, Iron Man, Captain America, Thor, Hulk, Ant-Man, Wasp, Black Panther, and Captain Marvel, as well as popular superhero teams such as the Avengers, X-Men, Fantastic Four, and Guardians of the Galaxy. Its stable of well-known supervillains includes Doctor Doom, Magneto, Green Goblin, Red Skull, Loki, Ultron, Thanos, Kang the Conqueror, Venom, and Galactus. Most of Marvel's fictional characters operate in a single reality known as the Marvel Universe, with most locations mirroring real-life places; many major characters are based in New York City.Additionally, Marvel has published several licensed properties from other companies. This includes Star Wars comics, twice from 1977 to 1987, and again since 2015.
-        </article>
-        <img src="{% static 'Avengers4.jpg' %}" style="margin-left: 80px;">
-        <article>In 1968, while selling 50 million[citation needed] comic books a year, company founder Goodman revised the constraining distribution arrangement with Independent News he had reached under duress during the Atlas years, allowing him now to release as many titles as demand warranted. Late that year, he sold Marvel Comics and its parent company, Magazine Management, to the Perfect Film & Chemical Corporation (later known as Cadence Industries), though he remained as publisher. In 1969, Goodman finally ended his distribution deal with Independent by signing with Curtis Circulation Company.</article>
-
-        <article>
-            In 1971, the United States Department of Health, Education, and Welfare approached Marvel Comics editor-in-chief Stan Lee to do a comic book story about drug abuse. Lee agreed and wrote a three-part Spider-Man story portraying drug use as dangerous and unglamorous. However, the industry's self-censorship board, the Comics Code Authority, refused to approve the story because of the presence of narcotics, deeming the context of the story irrelevant. Lee, with Goodman's approval, published the story regardless in The Amazing Spider-Man (May- July 1971), without the Comics Code seal. The market reacted well to the storyline, and the CCA subsequently revised the Code the same year.
-        </article>
+<section style="padding: 80px 0;">
+    <div class="container">
+        <h2 class="marvel-font" style="font-size: 3rem; text-align: center; margin-bottom: 4rem;">Iconic comic arc</h2>
+        <div class="hero-grid" id="comicGrid">
+            {% for comic in comics %}
+            <div class="flip-card" onclick="openComicModal('{{ comic.title|escapejs }}', '{% static comic.image_name %}', '{{ comic.description|escapejs }}', '{{ comic.purchase_url|escapejs }}')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front glass">
+                        <img src="{% static comic.image_name %}" alt="{{ comic.title }}">
+                        <div class="flip-card-title"><h3 class="marvel-font" style="font-size: 1.8rem; margin:0;">{{ comic.title }}</h3></div>
+                    </div>
+                    <div class="flip-card-back glass">
+                        <h3 class="marvel-font" style="font-size: 2rem; text-align: center;">{{ comic.title }}</h3>
+                        <p>{{ comic.description }}</p>
+                        <button class="btn-marvel" style="margin-top:20px; width: 80%; padding: 10px; font-size:1.2rem;">View Details</button>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div style="text-align: center; grid-column: 1 / -1; padding: 4rem;">
+                <h2 class="marvel-font" style="font-size: 2rem; color: var(--text-muted);">No comics available.</h2>
+            </div>
+            {% endfor %}
+        </div>
     </div>
+</section>
 
-    <div id="op">
-        <h1 id="tit1"> COMICS</h1>
-        <div id="cm1">   
-            <div class="im"><img src="{% static 'infinity.jpg' %}" width="300px" height="500" class="img"></div>
-            <div class="im"><img src="{% static 'comic1.avif' %}" width="300px" height="500" class="img"></div>
-            <div class="im"><img src="{% static 'marvels.jpeg' %}" width="300px" height="500" class="img"></div>
+<section style="padding: 80px 0; background-color: var(--dark-surface);">
+    <div class="container">
+        <h2 class="marvel-font" style="font-size: 3rem; text-align: center; margin-bottom: 4rem;">Cinematic database</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 2rem;">
+            <div class="glass" style="padding: 1rem; border-radius: 20px;">
+                <video controls style="width: 100%; border-radius: 12px;">
+                    <source src="{% static 'marvel promo.mp4' %}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <h3 class="marvel-font" style="margin-top: 1rem; padding-left: 0.5rem;">Marvel Multiverse Trailer</h3>
+            </div>
+            <div class="glass" style="padding: 1rem; border-radius: 20px;">
+                <video controls style="width: 100%; border-radius: 12px;">
+                    <source src="{% static 'marvel promo.mp4' %}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <h3 class="marvel-font" style="margin-top: 1rem; padding-left: 0.5rem;">MCU Legends Montage</h3>
+            </div>
         </div>
-        <div id="cm1">   
-            <div class="im"><img src="{% static 'daredevil.jpeg' %}" width="300px" height="500" class="img"></div>
-            <div class="im"><img src="{% static 'xmen.jpg' %}" width="300px" height="500" class="img"></div>
-            <div class="im"><img src="{% static 'civil war.webp' %}" width="300px" height="500" class="img"></div>
-        </div>
-        <div id="cm1">   
-            <div class="im"><img src="{% static 'world war hulk.jpg' %}" width="300px" height="500" class="img"></div>
-            <div class="im"><img src="{% static 'thor god.jpg' %}" width="300px" height="500" class="img"></div>
-            <div class="im"><img src="{% static 'hawkeye1.jpg' %}" width="300px" height="500" class="img"></div>
-        </div>
+    </div>
+</section>
 
-        <div><h1 id="tit2">MOVIES</h1></div>
-        <div id="cm2">
-            <div id="vc"><video controls src="{% static 'marvel promo.mp4' %}" width="500px" class="vm"></video></div>
-            <div id="vc"><video controls src="{% static 'marvel promo.mp4' %}" width="500px" class="vm"></video></div>
+<!-- Modal Structure for Comics -->
+<div id="comicModal" class="modal">
+    <div class="modal-content glass">
+        <span class="close-btn" onclick="closeComicModal()">&times;</span>
+        <img id="modalComicImg" class="modal-img" src="" alt="Comic Image">
+        <div class="modal-info">
+            <h2 id="modalComicTitle" class="marvel-font">Comic Title</h2>
+            <p id="modalComicDesc">Detailed description...</p>
+            <a id="modalBuyBtn" href="#" target="_blank" class="buy-btn">Buy Comic Now</a>
         </div>
     </div>
 </div>
-</body>
-</html>
+
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+<script>
+    function openComicModal(title, imgSrc, desc, buyUrl) {
+        document.getElementById("modalComicTitle").innerText = title;
+        document.getElementById("modalComicImg").src = imgSrc;
+        document.getElementById("modalComicImg").alt = title;
+        document.getElementById("modalComicDesc").innerText = desc;
+        
+        var buyBtn = document.getElementById("modalBuyBtn");
+        buyBtn.href = buyUrl;
+        
+        // Safety check to hide button if url is empty
+        if(buyUrl && buyUrl.length > 0) {
+            buyBtn.style.display = 'inline-block';
+        } else {
+            buyBtn.style.display = 'none';
+        }
+        
+        var modal = document.getElementById("comicModal");
+        modal.style.display = "flex";
+    }
+
+    function closeComicModal() {
+        document.getElementById("comicModal").style.display = "none";
+    }
+
+    // Close when clicking outside of modal-content
+    window.onclick = function(event) {
+        var modal = document.getElementById("comicModal");
+        if (event.target == modal) {
+            closeComicModal();
+        }
+    }
+</script>
+{% endblock %}

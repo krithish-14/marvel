@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Marvel Movie App{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'marvel_style.css' %}">
+    <link rel="icon" type="image" href="{% static 'the_avenger-removebg-preview.png' %}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <a href="{% url 'home' %}" style="display: flex; align-items: center; text-decoration: none;">
+                <img src="{% static 'logo.png' %}" alt="Marvel Logo" style="height: 50px; margin-right: 1rem;">
+            </a>
+            <ul class="nav-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'characters' %}">Characters</a></li>
+                <li><a href="{% url 'cm' %}">Comics & Movies</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'login' %}" style="color: var(--marvel-red);">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}" style="color: var(--marvel-red);">Join Now</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer style="padding: 4rem 0; border-top: 1px solid #333; text-align: center; margin-top: 4rem;">
+        <div class="container">
+            <img src="{% static 'marvel logo.png' %}" alt="Marvel" style="height: 40px; margin-bottom: 2rem;">
+            <p style="color: var(--text-muted); font-size: 0.9rem;">&copy; 2026 MARVEL. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
+
+    {% block scripts %}
+    <script>
+        function showToast(message, type) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            
+            // Marvel Toast Styling
+            toast.style.background = 'rgba(0, 0, 0, 0.9)';
+            toast.style.color = '#fff';
+            toast.style.padding = '15px 25px';
+            toast.style.marginBottom = '10px';
+            toast.style.borderRadius = '8px';
+            toast.style.borderLeft = '5px solid var(--marvel-red)';
+            toast.style.boxShadow = '0 5px 15px rgba(237, 29, 36, 0.3)';
+            toast.style.fontFamily = "'Inter', sans-serif";
+            toast.style.fontSize = '1rem';
+            toast.style.opacity = '0';
+            toast.style.transform = 'translateX(100%)';
+            toast.style.transition = 'all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+            toast.style.minWidth = '250px';
+            
+            toast.innerText = message;
+            container.appendChild(toast);
+
+            // Animate In
+            setTimeout(() => {
+                toast.style.opacity = '1';
+                toast.style.transform = 'translateX(0)';
+            }, 100);
+
+            // Animate Out & Remove after 3.5 seconds
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(100%)';
+                setTimeout(() => toast.remove(), 500);
+            }, 3500);
+        }
+
+        // Display Django messages as Toasts
+        {% if messages %}
+            {% for message in messages %}
+                showToast("{{ message|escapejs }}", "{{ message.tags }}");
+            {% endfor %}
+        {% endif %}
+    </script>
+    {% endblock %}
+</body>
+</html>

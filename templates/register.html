@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Create Account | Marvel{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="glass form-container">
+        <h1 class="marvel-font" style="font-size: 3rem; margin-bottom: 2rem; color: var(--marvel-red);">Assemble Now</h1>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">Join the Avengers and track your favorite movies.</p>
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Hero Name (Username)</label>
+                <input type="text" name="username" id="username" class="form-input" placeholder="e.g. IronMan" required>
+            </div>
+            <div class="form-group">
+                <label for="email">S.H.I.E.L.D. Email</label>
+                <input type="email" name="email" id="email" class="form-input" placeholder="stark@shield.gov" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Encrypted Password</label>
+                <input type="password" name="password" id="password" class="form-input" placeholder="••••••••" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm_password">Confirm Identity</label>
+                <input type="password" name="confirm_password" id="confirm_password" class="form-input" placeholder="••••••••" required>
+            </div>
+            
+            <button type="submit" class="btn-marvel" style="margin-top: 1rem;">Join The Initiative</button>
+        </form>
+
+        <p style="margin-top: 2rem; text-align: center; color: var(--text-muted);">
+            Already have an identity? <a href="{% url 'login' %}" style="color: var(--marvel-red); text-decoration: none;">Login Here</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

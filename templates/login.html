@@ -1,22 +1,33 @@
+{% extends "base.html" %}
 {% load static %}
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'cs3.css' %}" />
-    <link rel="icon" type="image" href="{% static 'the_avenger-removebg-preview.png' %}">
-    <title>Marvel Login</title>
-  </head>
-  <body id="body">
-    <div class="pos">
-    <b><h1 class="log"><span style="color: red;">Lo</span><span style="color: blue;">gin</span></h1></b>
-    <h3>Email/phone no:</h3>
-     <input type="text" placeholder="Enter email / number" >
-    <h3>Password:</h3>
-    <input type="text" placeholder="Enter Password" >
-    
-    <a href="{% url 'password' %}" >Forgot Password</a>
-    <a href="{% url 'home' %}"><button class="btn_red" style="color: aliceblue; cursor: pointer;">Login</button></a>
+
+{% block title %}Login | Marvel{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="glass form-container" style="max-width: 450px;">
+        <h1 class="marvel-font" style="font-size: 3rem; margin-bottom: 2rem; color: var(--marvel-red);">Login</h1>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">Authorized Personnel Only. Identify yourself, Hero.</p>
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Hero Identity</label>
+                <input type="text" name="username" id="username" class="form-input" placeholder="Hero Name / Email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Encryption Key</label>
+                <input type="password" name="password" id="password" class="form-input" placeholder="••••••••" required>
+            </div>
+            
+            <a href="{% url 'password' %}" style="display: block; text-align: right; margin-bottom: 1rem; color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">Recall Password?</a>
+            
+            <button type="submit" class="btn-marvel">Access Records</button>
+        </form>
+
+        <p style="margin-top: 2rem; text-align: center; color: var(--text-muted);">
+            New Hero? <a href="{% url 'register' %}" style="color: var(--marvel-red); text-decoration: none;">Join the Initiative</a>
+        </p>
     </div>
-  </body>
-</html>
+</div>
+{% endblock %}

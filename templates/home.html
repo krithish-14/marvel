@@ -1,26 +1,58 @@
+{% extends "base.html" %}
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'cs4.css' %}">
-    <link rel="icon" type="image" href="{% static 'the_avenger-removebg-preview.png' %}">
-    <title>dashboard</title>
-</head>
-<body id="rd">
-    <div id="main">
-    <div class="th"><a href="{% url 'home' %}"><img src="{% static 'the_avenger-removebg-preview.png' %}" id="logo"></a></div>
-    <div class="tr"><input type="text" placeholder="Search" ></div>
-    <div class="menu">
-        <a href="{% url 'characters' %}" class="ab"> characters</a>
-        <a href="{% url 'cm' %}" class="ab">comics & movie</a>    
-        <a href="#" class="ab">products</a>
-        <a href="#" class="ab">contact us</a>
-        <a href="{% url 'login' %}" class="ab" ><button type="button" class="btn btn-default btn-sm" style="color: blue;" >
-            <span class="glyphicon glyphicon-log-out"> Log out</span> 
-          </button>
-        </a>
+
+{% block title %}Dashboard | Marvel Universe{% endblock %}
+
+{% block content %}
+<section class="hero-section" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('{% static 'background.jpg' %}'); background-size: cover; padding: 100px 0; text-align: center;">
+    <div class="container">
+        <h1 class="marvel-font" style="font-size: 5rem; margin-bottom: 1rem;">Unleash Your Inner Hero</h1>
+        <p style="font-size: 1.2rem; color: var(--text-muted); margin-bottom: 3rem;">Explore the deepest archives of Marvel's greatest legends.</p>
+        
+        <div style="display: flex; gap: 1rem; justify-content: center;">
+            <a href="{% url 'characters' %}" class="btn-marvel" style="width: auto; padding: 15px 40px; text-decoration: none;">View Characters</a>
+            <a href="{% url 'cm' %}" class="btn-marvel" style="width: auto; padding: 15px 40px; text-decoration: none; background: transparent; border: 2px solid var(--marvel-red);">Watch Movies</a>
+        </div>
     </div>
+</section>
+
+<section style="padding: 60px 0;">
+    <div class="container">
+        <h2 class="marvel-font" style="font-size: 2.5rem; border-left: 5px solid var(--marvel-red); padding-left: 1rem; margin-bottom: 3rem;">Featured Records</h2>
+        
+        <div class="hero-grid">
+            <div class="hero-card glass">
+                <img src="{% static 'iron man 1.jpg' %}" alt="Iron Man">
+                <div class="hero-info">
+                    <h3>Iron Man</h3>
+                    <p>Genius, billionaire, playboy, philanthropist.</p>
+                </div>
+            </div>
+            
+            <div class="hero-card glass">
+                <img src="{% static 'spider man 1.jpg' %}" alt="Spider-Man">
+                <div class="hero-info">
+                    <h3>Spider-Man</h3>
+                    <p>Friendly neighborhood web-slinger.</p>
+                </div>
+            </div>
+            
+            <div class="hero-card glass">
+                <img src="{% static 'black widow.webp' %}" alt="Black Widow">
+                <div class="hero-info">
+                    <h3>Black Widow</h3>
+                    <p>Expert spy and lethal assassin.</p>
+                </div>
+            </div>
+            
+            <div class="hero-card glass">
+                <img src="{% static 'thor.jpg' %}" alt="Thor">
+                <div class="hero-info">
+                    <h3>Thor Odinson</h3>
+                    <p>The Mighty God of Thunder.</p>
+                </div>
+            </div>
+        </div>
     </div>
-</body>
-</html>
+</section>
+{% endblock %}
