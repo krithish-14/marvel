@@ -1,0 +1,64 @@
+
+
+.log
+{
+ text-align: center;
+}
+.btn_red
+{
+  border: 1px solid red;
+  background-color: black;
+  width: 100%;
+  margin: 40px 0 10px 0;
+  padding: 10px 0 10px 0;
+}
+.pos
+
+{
+    background-color: #fff;
+    width: 400px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+
+}
+body{
+    display: flex ;
+    align-items: center;
+    height: 100vh;
+    background-image: url('Marvel-Movie-App/Marvel Project/images/login/marvel.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;  
+}
+input
+{
+    width: 100%;
+    margin: 0 0 0 0 ;
+    padding: 10px 0 10px 10px;
+}
+
+input:hover{
+ 
+    text-shadow: 0 0 4px rgb(215, 79, 79), 0 0 3px rgb(222, 129, 129);
+}
+
+
+#title
+{
+    text-align: center;
+}
+#for{
+    background-color: #fff;
+    width: 400px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+.key
+{
+    border:1px solid red;
+    width: 100%;
+    background-color: black;
+    margin: 10px 0 10px 0;
+    padding: 10px 0 10px 0;
+}

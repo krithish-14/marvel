@@ -1,0 +1,22 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'cs3.css' %}" />
+    <link rel="icon" type="image" href="{% static 'the_avenger-removebg-preview.png' %}">
+    <title>Marvel Login</title>
+  </head>
+  <body id="body">
+    <div class="pos">
+    <b><h1 class="log"><span style="color: red;">Lo</span><span style="color: blue;">gin</span></h1></b>
+    <h3>Email/phone no:</h3>
+     <input type="text" placeholder="Enter email / number" >
+    <h3>Password:</h3>
+    <input type="text" placeholder="Enter Password" >
+    
+    <a href="{% url 'password' %}" >Forgot Password</a>
+    <a href="{% url 'home' %}"><button class="btn_red" style="color: aliceblue; cursor: pointer;">Login</button></a>
+    </div>
+  </body>
+</html>

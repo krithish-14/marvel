@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+*.pyc
+db.sqlite3
+.vscode/
+.DS_Store
+*.log
+local_settings.py
+# Keeping templates, style, and img folders as part of the core repository

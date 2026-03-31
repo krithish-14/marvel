@@ -1,0 +1,26 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'cs4.css' %}">
+    <link rel="icon" type="image" href="{% static 'the_avenger-removebg-preview.png' %}">
+    <title>dashboard</title>
+</head>
+<body id="rd">
+    <div id="main">
+    <div class="th"><a href="{% url 'home' %}"><img src="{% static 'the_avenger-removebg-preview.png' %}" id="logo"></a></div>
+    <div class="tr"><input type="text" placeholder="Search" ></div>
+    <div class="menu">
+        <a href="{% url 'characters' %}" class="ab"> characters</a>
+        <a href="{% url 'cm' %}" class="ab">comics & movie</a>    
+        <a href="#" class="ab">products</a>
+        <a href="#" class="ab">contact us</a>
+        <a href="{% url 'login' %}" class="ab" ><button type="button" class="btn btn-default btn-sm" style="color: blue;" >
+            <span class="glyphicon glyphicon-log-out"> Log out</span> 
+          </button>
+        </a>
+    </div>
+    </div>
+</body>
+</html>

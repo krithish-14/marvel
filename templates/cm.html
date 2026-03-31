@@ -1,0 +1,82 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'cs5.css' %}">
+    <link rel="icon" type="image" href="{% static 'the_avenger-removebg-preview.png' %}">
+    <title>comics and movies</title>
+</head>
+<body id="a1">
+    
+    <div id="a2">
+        <div class="a3">
+            <a href="{% url 'home' %}"><img src="{% static 'marvel logo.png' %}"  class="a6"></a>
+        </div>
+
+        <div class="a4">
+            <input type="text" placeholder="Search">
+        </div>
+
+        <div class="a5">
+        <span><h2>MENU</h2></span>
+          <div class="dropdowncontent">
+            <ul>
+            <li><a href="#tit1" class="bc" >comics</a></li>
+            <li><a href="#tit2" class="bc" >movies</a></li>
+            <li><a href="#" class="bc">episodes</a></li>
+            </ul>
+          </div>
+        </div>
+    </div>
+
+<div id="mp">  
+    <div id="vk">
+        <img src="{% static 'Marvel_Comics_2024_logo.svg' %}" width="200px" style="margin-left: 100px;"><br>
+        <article>Marvel Comics is a New York City-based comic book publisher, a property of 
+             The Walt Disney Company since December 31, 2009, and a subsidiary of Disney Publishing 
+             Worldwide since March 2023. Marvel was founded in 1939 by Martin Goodman as 
+             Timely Comics,and by 1951 had generally become known as Atlas Comics. 
+             The Marvel era began in August 1961 with the launch of The Fantastic Four and other superhero titles 
+             created by Stan Lee, Jack Kirby, Steve Ditko, and numerous others. The Marvel brand, which had been 
+             used over the years and decades, was solidified as the company's primary brand.
+        </article>
+
+        <img src="{% static 'comic2.jpeg' %}" width="50%" class="ke">
+        <article>Marvel counts among its characters such well-known superheroes as Spider-Man, Wolverine, Iron Man, Captain America, Thor, Hulk, Ant-Man, Wasp, Black Panther, and Captain Marvel, as well as popular superhero teams such as the Avengers, X-Men, Fantastic Four, and Guardians of the Galaxy. Its stable of well-known supervillains includes Doctor Doom, Magneto, Green Goblin, Red Skull, Loki, Ultron, Thanos, Kang the Conqueror, Venom, and Galactus. Most of Marvel's fictional characters operate in a single reality known as the Marvel Universe, with most locations mirroring real-life places; many major characters are based in New York City.Additionally, Marvel has published several licensed properties from other companies. This includes Star Wars comics, twice from 1977 to 1987, and again since 2015.
+        </article>
+        <img src="{% static 'Avengers4.jpg' %}" style="margin-left: 80px;">
+        <article>In 1968, while selling 50 million[citation needed] comic books a year, company founder Goodman revised the constraining distribution arrangement with Independent News he had reached under duress during the Atlas years, allowing him now to release as many titles as demand warranted. Late that year, he sold Marvel Comics and its parent company, Magazine Management, to the Perfect Film & Chemical Corporation (later known as Cadence Industries), though he remained as publisher. In 1969, Goodman finally ended his distribution deal with Independent by signing with Curtis Circulation Company.</article>
+
+        <article>
+            In 1971, the United States Department of Health, Education, and Welfare approached Marvel Comics editor-in-chief Stan Lee to do a comic book story about drug abuse. Lee agreed and wrote a three-part Spider-Man story portraying drug use as dangerous and unglamorous. However, the industry's self-censorship board, the Comics Code Authority, refused to approve the story because of the presence of narcotics, deeming the context of the story irrelevant. Lee, with Goodman's approval, published the story regardless in The Amazing Spider-Man (May- July 1971), without the Comics Code seal. The market reacted well to the storyline, and the CCA subsequently revised the Code the same year.
+        </article>
+    </div>
+
+    <div id="op">
+        <h1 id="tit1"> COMICS</h1>
+        <div id="cm1">   
+            <div class="im"><img src="{% static 'infinity.jpg' %}" width="300px" height="500" class="img"></div>
+            <div class="im"><img src="{% static 'comic1.avif' %}" width="300px" height="500" class="img"></div>
+            <div class="im"><img src="{% static 'marvels.jpeg' %}" width="300px" height="500" class="img"></div>
+        </div>
+        <div id="cm1">   
+            <div class="im"><img src="{% static 'daredevil.jpeg' %}" width="300px" height="500" class="img"></div>
+            <div class="im"><img src="{% static 'xmen.jpg' %}" width="300px" height="500" class="img"></div>
+            <div class="im"><img src="{% static 'civil war.webp' %}" width="300px" height="500" class="img"></div>
+        </div>
+        <div id="cm1">   
+            <div class="im"><img src="{% static 'world war hulk.jpg' %}" width="300px" height="500" class="img"></div>
+            <div class="im"><img src="{% static 'thor god.jpg' %}" width="300px" height="500" class="img"></div>
+            <div class="im"><img src="{% static 'hawkeye1.jpg' %}" width="300px" height="500" class="img"></div>
+        </div>
+
+        <div><h1 id="tit2">MOVIES</h1></div>
+        <div id="cm2">
+            <div id="vc"><video controls src="{% static 'marvel promo.mp4' %}" width="500px" class="vm"></video></div>
+            <div id="vc"><video controls src="{% static 'marvel promo.mp4' %}" width="500px" class="vm"></video></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

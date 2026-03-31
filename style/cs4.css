@@ -1,0 +1,595 @@
+#logo{
+    width: 100px;
+    height: 100px;
+}
+#rd
+{
+    background-image: url('background.jpg');
+}
+#main
+{
+  width: 100%;
+  display: flex;
+  /*display: grid;*/
+  border-bottom: 3px solid rgb(231, 153, 153);
+}
+.th
+{
+    width:20%;
+}
+.tr
+{
+    width: 30%;
+    padding: 5px 10px;
+}
+.menu
+{
+    width:50%;
+    margin-left: 10px;   
+}
+.ab
+{
+  text-decoration: none;
+  color: red blue;
+  padding: 0 10px;
+  text-transform: uppercase;
+  font-size: larger;
+  font-weight: bold;
+  visibility: visible;
+  
+}
+.ab:hover{
+
+    font-size: 100%;
+}
+.vd
+{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: auto ;
+    height: 70%;
+    width: 20%;
+}
+#hi
+{
+    
+    width: 100%;
+    display: flex;
+    border-bottom: 3px solid rgba(202, 118, 118, 0.612);
+    position: sticky;
+    top: 0;
+    background-color: grey;
+}
+.ld
+{
+  width: 38%;
+  margin: 20px 0 0 0;
+  
+}
+#black
+{
+  background-image: url('k3.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: auto;
+}
+input
+{
+  width: 100%;
+  padding: 10px 0;
+}
+input:hover{
+    text-shadow: 0 0 4px rgb(215, 79, 79), 0 0 3px rgb(222, 129, 129);
+}
+.ll
+{
+    width: 33%;
+    
+}
+
+/* row1 */
+#ch
+{
+    width: 100%;
+    display: flex;
+}
+
+#im
+{
+    text-align: center;
+    color: gold;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: xx-large;
+    background-image: url('iron man 1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
+    width: 200px;
+    margin: 10px 0 0 0;
+    padding: 20px 10px;
+    border-radius: 10px;
+    
+}
+#im:hover{
+
+    opacity: 0.6;
+}
+#sp
+{
+    text-align: center;
+    color: whitesmoke;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: xx-large;
+    background-image: url('spider man 1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
+    width: 200px;
+    margin: 10px 0 0 30px;
+    padding: 20px 10px;
+    border-radius: 10px;
+}
+#sp:hover{
+
+    opacity: 0.6;
+}
+
+#hu
+{
+    text-align: center;
+    color: green;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: xx-large;
+    background-image: url('hulk 1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
+    width: 200px;
+    margin: 10px 0 0 30px;
+    padding: 20px 10px;
+    border-radius: 10px;
+    
+}
+#hu:hover{
+
+    opacity: 0.6;
+}
+
+#ca
+{
+    text-align: center;
+    color: red;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: xx-large;
+    background-image: url('captain.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
+    width: 200px;
+    margin: 10px 0 0 30px;
+    padding: 20px 10px;
+    border-radius: 10px;
+    
+}
+
+#ca:hover{
+
+    opacity: 0.6;
+}
+
+#tho
+{
+    text-align: center;
+    color: rgb(6, 6, 156);
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: xx-large;
+    background-image: url('thor.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
+    width: 200px;
+    margin: 10px 0 0 30px;
+    padding: 20px 10px;
+    border-radius: 10px;
+    
+}
+
+#tho:hover{
+
+    opacity: 0.6;
+}
+
+#bp
+{
+    text-align: center;
+    color: white;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: xx-large;
+    background-image: url('black\ 2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
+    width: 200px;
+    margin: 10px 0 0 30px;
+    padding: 20px 10px;
+    border-radius: 10px;
+    
+}
+
+#bp:hover{
+
+    opacity: 0.6;
+}
+/* row2 */
+
+#ch1
+{
+    width: 100%;
+    display: flex;
+}
+
+#bw
+{
+    text-align: center;
+    color: black;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: xx-large;
+    background-image: url('black\ widow.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
+    width: 200px;
+    margin: 10px 0 0 0;
+    padding: 20px 10px;
+    border-radius: 10px;
+    
+}
+#bw:hover{
+
+    opacity: 0.6;
+}
+
+#cm
+{
+    text-align: center;
+    color: blue;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: xx-large;
+    background-image: url('captain\ marvel.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
+    width: 200px;
+    margin: 10px 0 0 30px;
+    padding: 20px 10px;
+    border-radius: 10px;
+    
+}
+
+#cm:hover{
+
+    opacity: 0.6;
+}
+
+#sw
+{
+    text-align: center;
+    color: black;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: xx-large;
+    background-image: url('Scarlet_Witch.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
+    width: 200px;
+    margin: 10px 0 0 30px;
+    padding: 20px 10px;
+    border-radius: 10px;
+    
+}
+
+#sw:hover{
+
+    opacity: 0.6;
+}
+
+#am
+{
+    text-align: center;
+    color: black;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: xx-large;
+    background-image: url('ant\ man.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
+    width: 200px;
+    margin: 10px 0 0 30px;
+    padding: 20px 10px;
+    border-radius: 10px;
+    
+}
+#am:hover{
+
+    opacity: 0.6;
+}
+#dp
+{
+    text-align: center;
+    color: red;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: xx-large;
+    background-image: url('deadpool.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
+    width: 200px;
+    margin: 10px 0 0 30px;
+    padding: 20px 10px;
+    border-radius: 10px;
+    
+}
+
+#dp:hover{
+
+    opacity: 0.6;
+}
+
+#ha
+{
+    text-align: center;
+    color: purple;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: xx-large;
+    background-image: url('hawekey.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
+    width: 200px;
+    margin: 10px 0 0 30px;
+    padding: 20px 10px;
+    border-radius: 10px;
+    
+}
+#ha:hover{
+
+    opacity: 0.6;
+}
+
+#ch2
+{
+    width: 100%;
+    display: flex;
+}
+
+#bw
+{
+    text-align: center;
+    color: black;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: xx-large;
+    background-image: url('black\ widow.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
+    width: 200px;
+    margin: 10px 0 0 0;
+    padding: 20px 10px;
+    border-radius: 10px;
+    
+}
+#cm
+{
+    text-align: center;
+    color: blue;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: xx-large;
+    background-image: url('captain\ marvel.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
+    width: 200px;
+    margin: 10px 0 0 30px;
+    padding: 20px 10px;
+    border-radius: 10px;
+    
+}
+#sw
+{
+    text-align: center;
+    color: black;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: xx-large;
+    background-image: url('Scarlet_Witch.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
+    width: 200px;
+    margin: 10px 0 0 30px;
+    padding: 20px 10px;
+    border-radius: 10px;
+    
+}
+
+#am
+{
+    text-align: center;
+    color: black;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: xx-large;
+    background-image: url('ant\ man.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
+    width: 200px;
+    margin: 10px 0 0 30px;
+    padding: 20px 10px;
+    border-radius: 10px;
+    
+}
+#dp
+{
+    text-align: center;
+    color: red;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: xx-large;
+    background-image: url('deadpool.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
+    width: 200px;
+    margin: 10px 0 0 30px;
+    padding: 20px 10px;
+    border-radius: 10px;
+    
+}
+
+#ha
+{
+    text-align: center;
+    color: purple;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: xx-large;
+    background-image: url('hawekey.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
+    width: 200px;
+    margin: 10px 0 0 30px;
+    padding: 20px 10px;
+    border-radius: 10px;
+    
+}
+
+#ch3
+{
+    width: 100%;
+    display: flex;
+}
+
+#bw
+{
+    text-align: center;
+    color: black;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: xx-large;
+    background-image: url('black\ widow.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
+    width: 200px;
+    margin: 10px 0 0 0;
+    padding: 20px 10px;
+    border-radius: 10px;
+    
+}
+#cm
+{
+    text-align: center;
+    color: blue;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: xx-large;
+    background-image: url('captain\ marvel.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
+    width: 200px;
+    margin: 10px 0 0 30px;
+    padding: 20px 10px;
+    border-radius: 10px;
+    
+}
+#sw
+{
+    text-align: center;
+    color: black;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: xx-large;
+    background-image: url('Scarlet_Witch.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
+    width: 200px;
+    margin: 10px 0 0 30px;
+    padding: 20px 10px;
+    border-radius: 10px;
+    
+}
+
+#am
+{
+    text-align: center;
+    color: black;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: xx-large;
+    background-image: url('ant\ man.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
+    width: 200px;
+    margin: 10px 0 0 30px;
+    padding: 20px 10px;
+    border-radius: 10px;
+    
+}
+#dp
+{
+    text-align: center;
+    color: red;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: xx-large;
+    background-image: url('deadpool.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
+    width: 200px;
+    margin: 10px 0 0 30px;
+    padding: 20px 10px;
+    border-radius: 10px;
+    
+}
+
+#ha
+{
+    text-align: center;
+    color: purple;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: xx-large;
+    background-image: url('hawekey.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
+    width: 200px;
+    margin: 10px 0 0 30px;
+    padding: 20px 10px;
+    border-radius: 10px;
+    
+}
+
+
+

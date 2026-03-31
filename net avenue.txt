@@ -1,0 +1,18 @@
+Gopal@1083
+
+
+---
+media query
+css position
+z-index
+javascript
+
+
+Set-wise project task for Front End development
+
+1. Galary List
+2. media Query (Responsive Navigation)
+3. Single Product (with tags or flags).
+4. Responsive Layouts.
+5. Complete Static Website.(Tutorials)
+6.responsive forms with all inputs
