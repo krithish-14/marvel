@@ -73,16 +73,27 @@ WSGI_APPLICATION = 'marvel_site.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'mssql',
-        'NAME': 'marvel',
-        'HOST': 'localhost\\SQLEXPRESS',
-        'OPTIONS': {
-            'driver': 'ODBC Driver 17 for SQL Server',
-        },
+try:
+    import pyodbc
+    # If pyodbc is installed (local testing), use MS SQL Server
+    DATABASES = {
+        'default': {
+            'ENGINE': 'mssql',
+            'NAME': 'marvel',
+            'HOST': 'localhost\\SQLEXPRESS',
+            'OPTIONS': {
+                'driver': 'ODBC Driver 17 for SQL Server',
+            },
+        }
     }
-}
+except ImportError:
+    # If pyodbc is NOT installed (like on Vercel), safely default back to standard SQLite
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
