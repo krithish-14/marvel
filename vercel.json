@@ -1,4 +1,6 @@
 {
+    "buildCommand": "bash build_files.sh",
+    "outputDirectory": "staticfiles_build",
     "functions": {
         "api/index.py": {
             "maxDuration": 30
