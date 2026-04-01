@@ -1,18 +1,13 @@
 {
-    "builds": [
-        {
-            "src": "marvel_site/wsgi.py",
-            "use": "@vercel/python",
-            "config": {
-                "maxLambdaSize": "15mb",
-                "runtime": "python3.12"
-            }
+    "functions": {
+        "api/index.py": {
+            "maxDuration": 30
         }
-    ],
-    "routes": [
+    },
+    "rewrites": [
         {
-            "src": "/(.*)",
-            "dest": "marvel_site/wsgi.py"
+            "source": "/(.*)",
+            "destination": "/api/index.py"
         }
     ]
 }
